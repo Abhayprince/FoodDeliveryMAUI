@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDeliveryMAUI.MainPage"
+             Shell.NavBarIsVisible="False"
+             xmlns:viewmodels="clr-namespace:FoodDeliveryMAUI.ViewModels"
+             xmlns:models="clr-namespace:FoodDeliveryMAUI.Models"
+             x:DataType="viewmodels:MainViewModel">
+
+        <VerticalStackLayout>
+            <!--Header-->
+            <Grid RowDefinitions="Auto, Auto"
+              ColumnDefinitions="Auto, *, Auto"
+              ColumnSpacing="10"
+              Padding="15, 10, 15, 5"
+            BackgroundColor="AliceBlue">
+
+                <!--First Row-->
+
+                <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Source="home.png"
+                   Aspect="AspectFill"
+                   HeightRequest="18"
+                   WidthRequest="18"
+                   HorizontalOptions="Start"/>
+
+                <HorizontalStackLayout Grid.Row="0"
+                                   Grid.Column="1"
+                                   Spacing="10">
+                    <Label Text="Home"
+                       FontAttributes="Bold"
+                       FontSize="16"/>
+
+                    <Label Text=">"
+                       Rotation="90"                       
+                       VerticalTextAlignment="Center"
+                       ScaleY="1.5"
+                       FontSize="16"/>
+
+                </HorizontalStackLayout>
+
+                <Image Grid.Row="0"
+                   Grid.Column="2"
+                   Source="user.png"
+                   Aspect="AspectFill"
+                   HeightRequest="18"
+                   WidthRequest="18" />
+
+                <!--Second Row - Search Bar-->
+
+                <Border Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="#eee"
+                        StrokeShape="RoundRectangle 10"
+                        Padding="0"
+                          Margin="0, 10, 0, 0">
+                    <Grid Padding="10, 0, 30, 0">
+
+                        <Entry Placeholder="Search for restaurant or dish"                     
+                               ClearButtonVisibility="WhileEditing"
+                               />
+                        <Image Source="search.png"
+                               Aspect="AspectFill"
+                               HeightRequest="18"
+                               WidthRequest="18"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"
+                               Opacity="0.5"
+                               Margin="0, 0, -20, 0"/>
+                    </Grid>
+                </Border>
+            </Grid>
+
+        <CollectionView ItemsSource="{Binding Categories}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Category">
+                    <VerticalStackLayout Margin="10, 0">
+                        <Border StrokeShape="RoundRectangle 10">
+                            <Image Source="{Binding Image}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="100"
+                                   WidthRequest="130"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"/>
+                        </Border>
+                        <Label Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        </VerticalStackLayout>
+
+</ContentPage>
