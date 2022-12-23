@@ -14,10 +14,10 @@
         Route="Home" />
 
         <ShellContent
-        Title="Nearbuy Restaurants"
+        Title="Nearby Restaurants"
          Icon="map.png"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="Nearbuy" />
+        Route="Nearby" />
 
         <ShellContent
         Title="My Orders"
