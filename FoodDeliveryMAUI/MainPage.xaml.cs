@@ -7,5 +7,10 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
     }
+
+	private void Offer_Tapped(object sender, EventArgs e)
+	{
+
+	}
 }
 

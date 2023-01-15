@@ -7,6 +7,16 @@
              xmlns:models="clr-namespace:FoodDeliveryMAUI.Models"
              x:DataType="viewmodels:MainViewModel">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="heading">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="#666666" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
         <VerticalStackLayout>
             <!--Header-->
             <Grid RowDefinitions="Auto, Auto"
@@ -89,12 +99,72 @@
                         </Border>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
-                               HorizontalOptions="Center"/>
+                               HorizontalOptions="Center"
+                               FontFamily="Poppins"/>
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
+        <VerticalStackLayout Padding="10"
+                             Spacing="10">
+            
+            <Label Text="Explore offers &amp; deals"
+                   Style="{StaticResource heading}"/>
+
+            <CarouselView ItemsSource="{Binding Offers}"
+                          IndicatorView="offersIndicatorView"
+                          >
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Offer">
+                        <!--<Grid BackgroundColor="{Binding BgColor}">-->
+                        <Grid RowDefinitions="*, Auto"
+                            BackgroundColor="Red" Padding="10">
+                            <Image Grid.Row="0"
+                                Source="{Binding Image}"
+                                   Aspect="AspectFit"
+                                   HeightRequest="250"
+                                   WidthRequest="230"/>
+                            
+                            <Label Grid.Row="1"
+                                    Text="{Binding Name}"
+                                   FontSize="20"
+                                   VerticalOptions="End"
+                                   HorizontalOptions="Center"
+                                   BackgroundColor="Snow"
+                                   Padding="5"
+                                   />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}, Path=SelectOfferCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="offersIndicatorView"
+                           IndicatorsShape="Circle"
+                           IndicatorColor="Gray"
+                           SelectedIndicatorColor="Red"
+                           IndicatorSize="12"
+                           HorizontalOptions="Center"
+                           />
+
         </VerticalStackLayout>
+
+        <VerticalStackLayout Padding="10"
+                             Spacing="10">
+
+            <Label Text="Explore restaurants"
+                   Style="{StaticResource heading}"/>
+
+            <Label Text="Restaurant listing will go here"/>
+
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
 
 </ContentPage>
