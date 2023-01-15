@@ -1,5 +1,6 @@
 ﻿
 using CommunityToolkit.Mvvm.Input;
+using System.Net.Http.Json;
 
 namespace FoodDeliveryMAUI.ViewModels
 {
@@ -10,11 +11,22 @@ namespace FoodDeliveryMAUI.ViewModels
 
         [ObservableProperty]
         private IEnumerable<Offer> _offers;
+        private readonly HttpClient _httpClient;
 
-        public MainViewModel()
+        public MainViewModel(IHttpClientFactory httpClientFactory)
         {
-            Categories = LoadCategories();
+            //Categories = LoadCategories();
             Offers = LoadDummyOffers();
+            _httpClient = httpClientFactory.CreateClient(AppConstants.ApiHttpClientName);
+        }
+
+        public async Task InitializeAsync()
+        {
+            // ITS ERRORING OUT NEED TO BE FIXED, 
+            // COMMENTED FOR NOW, WILL FIX IN NEXT VIDEO
+            //Categories = await LoadCategoriesAsync();
+
+            Categories = LoadCategories();
         }
 
         [RelayCommand]
@@ -22,22 +34,26 @@ namespace FoodDeliveryMAUI.ViewModels
         {
             await Shell.Current.DisplayAlert("Offer Tapped", $"Offer {offer} is selected. We will move to a new page for offer details", "Ok");
         }
-
-        private static IEnumerable<Category> LoadCategories()
+        private async Task<IEnumerable<Category>> LoadCategoriesAsync()
         {
-            return new List<Category>
-            {
-                new Category(1, "Burgers", "burgers.png"),
-                new Category(2, "Desserts", "desserts.png"),
-                new Category(3, "Drinks", "drinks.png"),
-                new Category(4, "Non-Veg", "nonveg.png"),
-                new Category(5, "Pizza", "pizza.png"),
-                new Category(6, "Rice", "rice.png"),
-                new Category(7, "Seafood", "seafood.png"),
-                new Category(8, "Soups", "soups.png"),
-                new Category(9, "Veg", "veg.png"),
-            };
+            var categories = await _httpClient.GetFromJsonAsync<IEnumerable<Category>>("https://localhost:7293/api/categories");
+            return categories;
         }
+        //private static IEnumerable<Category> LoadCategories()
+        //{
+        //    return new List<Category>
+        //    {
+        //        new Category(1, "Burgers", "burgers.png"),
+        //        new Category(2, "Desserts", "desserts.png"),
+        //        new Category(3, "Drinks", "drinks.png"),
+        //        new Category(4, "Non-Veg", "nonveg.png"),
+        //        new Category(5, "Pizza", "pizza.png"),
+        //        new Category(6, "Rice", "rice.png"),
+        //        new Category(7, "Seafood", "seafood.png"),
+        //        new Category(8, "Soups", "soups.png"),
+        //        new Category(9, "Veg", "veg.png"),
+        //    };
+        //}
         private static IEnumerable<Offer> LoadDummyOffers()
         {
             return new List<Offer>

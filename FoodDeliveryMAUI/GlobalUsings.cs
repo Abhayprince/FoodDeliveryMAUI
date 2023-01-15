@@ -7,3 +7,6 @@ global using CommunityToolkit.Maui;
 global using FoodDeliveryMAUI.ViewModels;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using FoodDeliveryMAUI.Models;
+
+global using FoodDelivery.Shared.Enumerations;
+global using FoodDeliveryMAUI.Constants;

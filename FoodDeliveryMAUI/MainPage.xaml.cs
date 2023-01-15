@@ -2,15 +2,19 @@
 
 public partial class MainPage : ContentPage
 {
+	private readonly MainViewModel _viewModel;
+
 	public MainPage(MainViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
-    }
+		_viewModel = viewModel;
+	}
 
-	private void Offer_Tapped(object sender, EventArgs e)
+	protected async override void OnAppearing()
 	{
-
+		base.OnAppearing();
+		await _viewModel.InitializeAsync();
 	}
 }
 

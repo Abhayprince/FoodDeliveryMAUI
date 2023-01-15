@@ -1,14 +1,25 @@
-﻿namespace FoodDeliveryMAUI.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FoodDelivery.Api.Data.Entities
 {
+    [Table(nameof(Offer))]
     public class Offer
     {
+        [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Image { get; set; }
-        public string Description { get; set; }
 
-        //Coupon Code
-        public string Code { get; set; }
+        [Required, StringLength(50, MinimumLength = 10)]
+        public string Name { get; set; }
+
+        [Required, StringLength(25, MinimumLength = 3)]
+        public string Image { get; set; }
+
+        [MaxLength(250)]
+        public string? Description { get; set; }
+
+        [Required, StringLength(10, MinimumLength = 3)]
+        public string Code { get; set; }//Coupon Code
 
         public OfferType OfferType { get; set; }
 
@@ -23,7 +34,8 @@
 
         public bool IsActive { get; set; }
 
-        public string BgColor { get; set; }
+        [MaxLength(15)]
+        public string? BgColor { get; set; }
 
         public Offer(int id, string name, string image, string description, string code, OfferType offerType, decimal offeredValue, decimal? minAmount, DateTime? validTill, string bgColor = "Red")
         {
@@ -41,8 +53,6 @@
         }
         public Offer()
         {
-
         }
-        public override string ToString() => $"[Id: {Id}, Name: {Name}]";
     }
 }

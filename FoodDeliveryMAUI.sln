@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodDeliveryMAUI", "FoodDeliveryMAUI\FoodDeliveryMAUI.csproj", "{54553DF1-78E8-44AC-A54E-3D84FB6B52F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Api", "FoodDelivery.Api\FoodDelivery.Api.csproj", "{23778CD0-4CFD-4851-A200-94179FC62F5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodDelivery.Shared", "FoodDelivery.Shared\FoodDelivery.Shared.csproj", "{B239BB93-6066-4429-B412-06C7064BC02F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{54553DF1-78E8-44AC-A54E-3D84FB6B52F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54553DF1-78E8-44AC-A54E-3D84FB6B52F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54553DF1-78E8-44AC-A54E-3D84FB6B52F9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{23778CD0-4CFD-4851-A200-94179FC62F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23778CD0-4CFD-4851-A200-94179FC62F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23778CD0-4CFD-4851-A200-94179FC62F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23778CD0-4CFD-4851-A200-94179FC62F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B239BB93-6066-4429-B412-06C7064BC02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B239BB93-6066-4429-B412-06C7064BC02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B239BB93-6066-4429-B412-06C7064BC02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B239BB93-6066-4429-B412-06C7064BC02F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
